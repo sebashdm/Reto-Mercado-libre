@@ -1,0 +1,29 @@
+{
+    "name": "apimeli",
+    "version": "1.0.0",
+    "engines": {
+        "node": "14.16.1"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./src/index.js",
+        "dev": "nodemon ./src/index.js"
+    },
+    "keywords": [
+        "mercadolibre",
+        "challenge",
+        "express",
+        "api"
+    ],
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    },
+    "author": "Sebastian Hernandez <sebashdm@gmail.com>"
+}
