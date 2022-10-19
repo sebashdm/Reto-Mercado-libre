@@ -1,0 +1,17 @@
+@import '../../../sass/variables.scss';
+
+.navbar {
+    background-color: $yellow;
+    padding: $spacing-100 0;
+    text-align: center;
+
+    // Así nos aseguramos que estamos seleccionando el Container y no otro div
+    & > div:only-child {
+        display: flex;
+        align-items: center;
+    }
+
+    form {
+        margin-left: $spacing-200;
+    }
+}

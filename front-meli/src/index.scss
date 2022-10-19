@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
+@import './sass/variables';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: $gray-200;
+    opacity: 1;
+}
+
+body {
+    font-family: 'Nunito', 'Proxima Nova', Helvetica, Arial, sans-serif;
+    background-color: $gray-100;
+    word-break: break-word;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    background-color: white;
+    padding: $spacing-100;
+    margin-bottom: 3em;
+}
+
+input {
+    filter: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 1s ease-in-out;
+    transition-delay: 5000s;
+}

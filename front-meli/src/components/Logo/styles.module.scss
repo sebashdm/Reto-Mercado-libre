@@ -1,0 +1,18 @@
+@import '../../../sass/variables.scss';
+
+.logoContainer {
+    height: 20px;
+    a {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        height: 20px;
+        transition: filter 200ms ease;
+
+    }
+    img {
+        height: 35px;
+      }
+}
