@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/mercado-libre-logo.svg';
+import logo from '../../assets/mercado-libre-logo.png';
 import Styles from './styles.module.scss';
 
 const Logo = () => {
