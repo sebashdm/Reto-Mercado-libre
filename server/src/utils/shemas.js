@@ -16,7 +16,7 @@ const getDecimals = (price) => {
     return +price.toString().split('.')[1] || 0;
 };
 
-const getFormattedItem = (product) => {
+const formattedItems = (product) => {
     return {
         id: product.id,
         title: product.title,
@@ -32,7 +32,7 @@ const getFormattedItem = (product) => {
     };
 };
 
-const getItemWithDescription = (product, description) => {
+const getItemsDescriptions = (product, description) => {
     return {
         id: product.id,
         title: product.title,
@@ -49,4 +49,4 @@ const getItemWithDescription = (product, description) => {
     };
 };
 
-module.exports = { getCategoryId, getFormattedItem, getItemWithDescription };
+module.exports = { getCategoryId, formattedItems, getItemsDescriptions };

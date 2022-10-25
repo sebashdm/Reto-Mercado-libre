@@ -3,17 +3,18 @@ const author = require('../utils/author');
 const errors = require('../utils/errors');
 const {
     getCategoryId,
-    getFormattedItem,
-    getItemWithDescription,
-} = require('../utils/functions');
+    formattedItems,
+    getItemsDescriptions,
+} = require('../utils/shemas');
 
-const getItems = async (req, res) => {
+
+    const getItems = async (req, res) => {
     const itemName = req.query.q;
     if (!itemName) return res.status(400).json(errors.empty_query);
 
     try {
-        const { data: products } = await axios.get(`/sites/MLA/search?q=${itemName}&limit=4`);
-        const { filters, available_filters, results } = products;
+        const { data: itemsList } = await axios.get(`/sites/MLA/search?q=${itemName}&limit=4`);
+        const { filters, available_filters, results } = itemsList;
 
         if (!results.length) return res.status(404).json(errors.not_found);
 
@@ -23,13 +24,13 @@ const getItems = async (req, res) => {
             const { path_from_root } = filters[0].values[0];
             categories = path_from_root.map((category) => category.name);
         } else {
-            const categoryId = getCategoryId(available_filters);
-            const { data } = await axios.get(`/categories/${categoryId}`);
+            const catId = getCategoryId(available_filters);
+            const { data } = await axios.get(`/categories/${catId}`);
             const { path_from_root } = data;
             categories = path_from_root.map((category) => category.name);
         }
 
-        const items = results.map((item) => getFormattedItem(item));
+        const items = results.map((item) => formattedItems(item));
         const formattedObject = { author, categories, items };
         return res.json(formattedObject);
     } catch (error) {
@@ -37,24 +38,24 @@ const getItems = async (req, res) => {
     }
 };
 
-const getItemInfo = async (req, res) => {
+    const getItemstInfo = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const { data: product } = await axios.get(`/items/${id}`);
-        const { data: categoryData } = await axios.get(`/categories/${product.category_id}`);
+        const { data: itemData } = await axios.get(`/items/${id}`);
+        const { data: categoryData } = await axios.get(`/categories/${itemData.category_id}`);
         const { path_from_root } = categoryData;
         const categories = path_from_root.map((cat) => cat.name);
 
-        let productDescription = {};
+        let itemDescription = {};
         try {
             const { data } = await axios.get(`/items/${id}/description`);
-            productDescription = data;
+            itemDescription = data;
         } catch (err) {
-            productDescription = { plain_text: 'Producto sin descripción.' };
+            itemDescription = { plain_text: 'Producto sin descripción.' };
         }
 
-        const item = getItemWithDescription(product, productDescription.plain_text);
+        const item = getItemsDescriptions(itemData, itemDescription.plain_text);
         const formattedObject = { author, item, categories };
         return res.json(formattedObject);
     } catch (error) {
@@ -65,4 +66,4 @@ const getItemInfo = async (req, res) => {
     }
 };
 
-module.exports = { getItems, getItemInfo };
+module.exports = { getItems, getItemstInfo };

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Styles from './style.module.scss';
 
-const SinglePageLayout = ({ children }) => {
+const ViewContainer = ({ children }) => {
     return (
         <main className={Styles.flex}>
             <div className={Styles.flexContainer}>{children}</div>
@@ -9,8 +9,8 @@ const SinglePageLayout = ({ children }) => {
     );
 };
 
-export default SinglePageLayout;
+export default ViewContainer;
 
-SinglePageLayout.propTypes = {
+ViewContainer.propTypes = {
     children: PropTypes.node,
 };
