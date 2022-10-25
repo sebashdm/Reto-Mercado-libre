@@ -7,13 +7,12 @@ import ItemsContainer from '../../components/itmesContainer';
 const ItemsListing = () => {
 
    const itemsData = useSelector(getAllItems);
-   const { items } = itemsData;
-   const { categories } = itemsData
+   const { items } =  itemsData
 
     return (
         <>
-         {categories?.length > 0 && <Breadcrumbs breadcrumbs={categories} />} 
-         {items?.length > 0 && <ItemsContainer items={items} />} 
+         {items.categories?.length > 0 && <Breadcrumbs breadcrumbs={items.categories} />} 
+         {items.items?.length > 0 && <ItemsContainer items={items.items} />} 
         </>
     );
 };
