@@ -22,7 +22,8 @@ export const fecthAsyncItemsDetail = createAsyncThunk(
 
 const initialState = {
     items: [],
-    selectedItem: {}
+    selectedItem: {},
+    isLoading: false
 }
 
 const itemsSlice = createSlice({
@@ -39,7 +40,7 @@ const itemsSlice = createSlice({
         },
         [fecthAsyncItems.fulfilled]: (state, { payload }) => {
             console.log("Fetched Successfully");
-            return{...state, items: payload }
+            return {...state, items: payload }
         },
         [fecthAsyncItems.rejected]: () => {
             console.log("Rejected");
@@ -54,4 +55,5 @@ const itemsSlice = createSlice({
 export const { addItems } = itemsSlice.actions;
 export const getAllItems = (state) => state.items;
 export const getSelectedItem = (state) => state.items.selectedItem;
+export const isLoading = (state) =>  state.items.isLoading;
 export default itemsSlice.reducer;

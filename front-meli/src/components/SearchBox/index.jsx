@@ -8,7 +8,7 @@ import Styles from './styles.module.scss';
 const SearchBox = () => {
     const [term, setTerm] = useState('');
     const dispatch = useDispatch();
-
+    const history = useHistory();
 
     const handleChange = (e) => {
         setTerm(e.target.value);
@@ -16,7 +16,11 @@ const SearchBox = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(fecthAsyncItems(term))
+        if(term){
+            dispatch(fecthAsyncItems(term))
+            history.push(`/items?search=${term}`);
+            setTerm("")
+        }
     };
 
     return (

@@ -4,7 +4,6 @@
     background-color: white;
     display: flex;
     position: relative;
-    border-radius: 10px;
     outline: 2px solid transparent;
     transition: outline-color 200ms ease;
 
@@ -15,7 +14,7 @@
     }
 
     &:focus-within {
-        outline-color: lighten($blue, 30%);
+        outline-color: lighten($blue, 60%);
     }
 
     .imgContainer {
@@ -37,7 +36,7 @@
         display: flex;
     }
 
-    .productInfo {
+    .itemInfo {
         flex: 6 1 0;
         margin-top: $spacing-100;
     }
@@ -45,10 +44,6 @@
     .itemPrice {
         font-size: $font-500;
         display: inline-block;
-    }
-
-    .product__shipping {
-        margin-left: $spacing-100;
     }
 
     .itemTitle {
@@ -78,24 +73,23 @@
         }
     }
 
-    .product__address {
-        flex: 2 0 0;
-        margin-top: $spacing-100;
-        font-size: $font-100;
+    .itemAddress {
         color: $gray-300;
+        margin-top: $spacing-100;
+        font-size: $font-100;       
     }
 
     @media (max-width: $breakpoint-md) {
-        .productInfo__container {
+        .itemContainer {
             flex-direction: column;
         }
 
-        .product__title {
+        .itemTitle {
             max-width: 100%;
             margin-top: $spacing-100;
         }
 
-        .product__address {
+        .itemAddress {
             flex: 0;
         }
     }
@@ -110,7 +104,7 @@
             margin-right: 0;
         }
 
-        .product__title {
+        .itemTitle {
             margin-top: $spacing-100;
         }
     }

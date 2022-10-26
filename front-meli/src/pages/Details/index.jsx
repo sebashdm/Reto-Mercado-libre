@@ -8,13 +8,13 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 
 
 const Details = () => {
- const {id} = useParams();
- const dispatch = useDispatch();
-const data = useSelector(getSelectedItem)
-console.log('detail data', data)
+   const {id} = useParams();
+   const dispatch = useDispatch();
+   const data = useSelector(getSelectedItem)
+
 
  useEffect(() => {
-  dispatch(fecthAsyncItemsDetail(id))
+    dispatch(fecthAsyncItemsDetail(id))
 }, [dispatch, id]);
 
 

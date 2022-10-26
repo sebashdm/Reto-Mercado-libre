@@ -12,7 +12,8 @@ const App = () => {
             <Navbar />
             <Container>
                 <Switch>
-                    <Route exact path='/' component={SearchResults} />
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/items' component={SearchResults} />
                     <Route exact path='/items/:id' component={Details} />
                 </Switch>
             </Container>

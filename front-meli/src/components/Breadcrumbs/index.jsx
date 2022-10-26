@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import s from './styles.module.scss';
+import Styles from './styles.module.scss';
 
 const Breadcrumbs = ({ breadcrumbs }) => {
 
     console.log('este es el error ?', breadcrumbs)
     return (
-        <ul className={s.breadcrumbs} data-testid='breadcrumbs'>
+        <ul className={Styles.breadcrumbs} data-testid='breadcrumbs'>
             {breadcrumbs?.map((category) => (
                 <li key={category}>
                     <a href='#0'>{category}</a>

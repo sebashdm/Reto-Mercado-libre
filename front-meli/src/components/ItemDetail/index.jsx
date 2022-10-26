@@ -2,24 +2,24 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import Paragraphs from './components/Paragraphs';
 import { formatDecimals } from '../../static/utils/schemas';
-import s from './styles.module.scss';
+import Styles from './styles.module.scss';
 
 const ProductDetail = ({ product }) => {
     const { condition, sold_quantity, title, price, description, picture } = product;
 
     return (
-        <main className={s.productContainer}>
-            <div className={s.flexContainer}>
-                <div className={s.product__image}>
+        <main className={Styles.itemContainer}>
+            <div className={Styles.flexContainer}>
+                <div className={Styles.itemImage}>
                     <img src={picture} alt={title} />
                 </div>
-                <div className={s.product__info}>
-                    <p className={s.product__condition}>
+                <div className={Styles.itemInfo}>
+                    <p className={Styles.itemCondition}>
                         {condition} - {sold_quantity || '0'}{' '}
                         {sold_quantity === 1 ? 'vendido' : 'vendidos'}
                     </p>
-                    <h2 className={s.product__title}>{title}</h2>
-                    <p className={s.product__price}>
+                    <h2 className={Styles.itemTitle}>{title}</h2>
+                    <p className={Styles.itemPrice}>
                         ${price.amount.toLocaleString('es-AR')}
                         <span>{formatDecimals(price.decimals)}</span>
                     </p>
@@ -27,7 +27,7 @@ const ProductDetail = ({ product }) => {
                 </div>
             </div>
 
-            <div className={s.product__description}>
+            <div className={Styles.itemDescription}>
                 <h3>Descripción del producto</h3>
                 <Paragraphs string={description} />
             </div>
