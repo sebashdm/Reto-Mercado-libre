@@ -12,7 +12,7 @@ const MockItemCard = ({ item }) => {
     );
 };
 
-describe('Componente <ProductCard />', () => {
+describe('ItemCard Component', () => {
     it('renders item card', () => {
         render(<MockItemCard item={mockItem} />);
         const article = screen.getByRole('article');
