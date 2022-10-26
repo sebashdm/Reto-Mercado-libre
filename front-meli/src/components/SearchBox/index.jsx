@@ -1,21 +1,22 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import searchIcon from '../../assets/search.png';
+import { fecthAsyncItems } from '../../features/items/itemsSlice';
 import Styles from './styles.module.scss';
 
 const SearchBox = () => {
-    const [query, setQuery] = useState('');
-    const history = useHistory();
+    const [term, setTerm] = useState('');
+    const dispatch = useDispatch();
 
-    const handleChange = (ev) => {
-        setQuery(ev.target.value);
+
+    const handleChange = (e) => {
+        setTerm(e.target.value);
     };
 
-    const handleSubmit = (ev) => {
-        ev.preventDefault();
-        if (query) {
-            history.push(`/items?search=${query}`);
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(fecthAsyncItems(term))
     };
 
     return (
@@ -24,7 +25,7 @@ const SearchBox = () => {
                 type='text'
                 id='search-input'
                 placeholder='Buscar productos, marcas y más...'
-                value={query}
+                value={term}
                 onChange={handleChange}
             />
             <button aria-label='Buscar'>

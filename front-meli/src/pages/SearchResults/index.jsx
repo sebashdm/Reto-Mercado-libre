@@ -8,7 +8,7 @@ import ItemsListing from '../../components/ItemsListing/index.js';
 
 const Results = () => {
     const dispatch = useDispatch();
-    
+   
     useEffect(() => {
          dispatch(fecthAsyncItems())
     }, [dispatch]);
