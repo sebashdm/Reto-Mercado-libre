@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ItemCard from '../ItemCard';
 
-const ProductsContainer = ({ items }) => {
+const ItemsContainer = ({ items }) => {
     return (
         <main>
             {items?.map((item) => (
@@ -11,8 +11,8 @@ const ProductsContainer = ({ items }) => {
     );
 };
 
-export default ProductsContainer;
+export default ItemsContainer;
 
-ProductsContainer.propTypes = {
-    arrayProd: PropTypes.arrayOf(PropTypes.object).isRequired,
+ItemsContainer.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
