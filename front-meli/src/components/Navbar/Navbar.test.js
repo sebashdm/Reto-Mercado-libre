@@ -8,7 +8,7 @@ const MockNavbar = () => (
     <BrowserRouter>
      <Provider store={store}>
         <Navbar />
-        </Provider>
+     </Provider>
     </BrowserRouter>
 );
 
