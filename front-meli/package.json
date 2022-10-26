@@ -2,6 +2,7 @@
   "name": "front-meli",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "@redux-beacon/google-analytics": "^1.1.1",
     "@reduxjs/toolkit": "^1.8.6",
