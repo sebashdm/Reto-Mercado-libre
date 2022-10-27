@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from '../../static/axios'
+import { HTTP_STATUS } from '../constants';
 
 export const fecthAsyncItems = createAsyncThunk(
     'items/fecthAsyncItems', 
@@ -23,7 +24,7 @@ export const fecthAsyncItemsDetail = createAsyncThunk(
 const initialState = {
     items: [],
     selectedItem: {},
-    isLoading: false
+    loading: null
 }
 
 const itemsSlice = createSlice({
@@ -35,14 +36,17 @@ const itemsSlice = createSlice({
         },
     },
     extraReducers: {
-        [fecthAsyncItems.pending]: () => {
+        [fecthAsyncItems.pending]: (state) => {
+            state.loading = HTTP_STATUS.PENDING
             console.log("Pending");
         },
         [fecthAsyncItems.fulfilled]: (state, { payload }) => {
+            state.items =payload
+            state.loading = HTTP_STATUS.FULFILLED
             console.log("Fetched Successfully");
-            return {...state, items: payload }
         },
-        [fecthAsyncItems.rejected]: () => {
+        [fecthAsyncItems.rejected]: (state) => {
+          //  state.loading = HTTP_STATUS.REJECTED
             console.log("Rejected");
         },
         [fecthAsyncItemsDetail.fulfilled]: (state, { payload }) => {
@@ -55,5 +59,5 @@ const itemsSlice = createSlice({
 export const { addItems } = itemsSlice.actions;
 export const getAllItems = (state) => state.items;
 export const getSelectedItem = (state) => state.items.selectedItem;
-export const isLoading = (state) =>  state.items.isLoading;
+export const getLoadingStatus = (state) => state.items.loading;
 export default itemsSlice.reducer;

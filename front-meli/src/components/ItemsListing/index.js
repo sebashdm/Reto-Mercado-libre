@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getAllItems } from '../../features/items/itemsSlice';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import ItemsContainer from '../../components/itmesContainer';
+import ItemsContainer from '../ItmesContainer';
 
 
 
